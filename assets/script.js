@@ -16,3 +16,10 @@ const slides = [
 		"tagLine":"Autocollants <span>avec découpe laser sur mesure</span>"
 	}
 ]
+
+//RECUPERATION DES FLECHES
+
+let arrowRight = document.getElementsByClassName('arrow_right'),
+	arrowLeft = document.getElementsByClassName ('arrow_left');
+
+
