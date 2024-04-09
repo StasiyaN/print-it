@@ -19,7 +19,8 @@ const slides = [
 
 //RECUPERATION DES FLECHES
 
-let arrowRight = document.getElementsByClassName('arrow_right'),
-	arrowLeft = document.getElementsByClassName ('arrow_left');
+let arrowRight = document.querySelector('.arrow_right'),
+	arrowLeft = document.querySelector('.arrow_left');
+
 
 
