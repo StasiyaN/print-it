@@ -17,6 +17,12 @@ const slides = [
 	}
 ]
 
+//RECUPERATION DES FLECHES
+
+const arrowRight = document.querySelector('.arrow_right'),
+	  arrowLeft = document.querySelector('.arrow_left');
+
+
 //AJOUT BULLET POINTS
 const dotsList = document.querySelector('.dots');
 
@@ -25,40 +31,47 @@ slides.forEach(() => {
 	dot.classList.add('dot');
 	dotsList.appendChild(dot);
  });
- 
-console.log (dotsList);
-
-
-
-
-//RECUPERATION DES FLECHES
-
-const arrowRight = document.querySelector('.arrow_right'),
-	  arrowLeft = document.querySelector('.arrow_left');
-
-	  console.log ('arrowRight', 'arrowLeft');
-
-
-//AJOUT DE EVENT LISTENERS POUR LES FLECHES & CREATION DE LA FONCTIONS CLICK RIGHT & LEFT
-
-function rightClick () {
-	console.log ('click')
-}
-
-function leftClick () {
-	console.log ('click')
-}
-
-arrowRight.addEventListener ('click', rightClick );
-arrowLeft.addEventListener ('click', leftClick);
-
-
-
-
 
 
 //CREATION DU VARIABLE IMAGE ACTUELLE DANS LA DIAPO
 let imageIndex = 0;
+
+// CREATION DE LA DONCTION POUR AFFICER LE SLIDER
+
+function showSlide (index) {
+	slides.forEach ((slide, i)=> {
+		slide.classList.toggle('active', i === index);
+	});
+}
+
+showSlide(imageIndex);
+
+
+
+
+
+
+
+
+
+
+// //AJOUT DE EVENT LISTENERS POUR LES FLECHES & CREATION DE LA FONCTIONS CLICK RIGHT & LEFT
+
+// function rightClick () {
+// 	console.log ('click')
+// }
+
+// function leftClick () {
+// 	console.log ('click')
+// }
+
+// arrowRight.addEventListener ('click', rightClick );
+// arrowLeft.addEventListener ('click', leftClick);
+
+
+
+
+
 
 
 
