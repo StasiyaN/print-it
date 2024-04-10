@@ -20,7 +20,24 @@ const slides = [
 //RECUPERATION DES FLECHES
 
 const arrowRight = document.querySelector('.arrow_right'),
-	arrowLeft = document.querySelector('.arrow_left');
+	  arrowLeft = document.querySelector('.arrow_left');
+
+	  console.log ('arrowRight', 'arrowLeft');
+
+
+//AJOUT DE EVENT LISTENERS POUR LES FLECHES & CREATION DE LA FONCTIONS CLICK RIGHT & LEFT
+
+function rightClick () {
+	console.log ('click')
+}
+
+function leftClick () {
+	console.log ('click')
+}
+
+arrowRight.addEventListener ('click', rightClick );
+arrowLeft.addEventListener ('click', leftClick);
+
 
 //CREATION DU VARIABLE IMAGE ACTUELLE DANS LA DIAPO
 let imageIndex = 0;
