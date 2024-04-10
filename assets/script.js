@@ -19,8 +19,13 @@ const slides = [
 
 //RECUPERATION DES FLECHES
 
-let arrowRight = document.querySelector('.arrow_right'),
+const arrowRight = document.querySelector('.arrow_right'),
 	arrowLeft = document.querySelector('.arrow_left');
+
+//CREATION DU VARIABLE IMAGE ACTUELLE DANS LA DIAPO
+let imageIndex = 0;
+
+
 
 
 
