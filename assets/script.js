@@ -17,103 +17,51 @@ const slides = [
 	}
 ]
 
- //RECUPERATION DE BANNER
-let banner = document.getElementById('banner');
-
-//SUPRESSION DE L IMAGE STADIC DANS LE BANNER
-
-banner.firstElementChild.remove ();
-banner.firstElementChild.remove ();
-
-
-
-
-slides.forEach ((slide, index) => {
-	//CREATION DE VARIABLES POUR CREER LE CONTENU DU SLIDER
-	let slideBlock = document.createElement('div');
-	slideBlock.classList.add ('slide-wrapper');
-
-	let slideImage = document.createElement('img');
-	slideImage.classList.add ('slider-img');
-	slideImage.src = `./assets/images/slideshow/${slide.image}`;
-	slideImage.alt = 'Banner Print-it';
-
-	let tagLine = document.createElement ('p');
-	tagLine.innerHTML = slide.tagLine;
-
-	//AJOUT DE NOUVELLES VARIABLES DANS LE BANNER/SLIDE BLOCK
-	slideBlock.appendChild(slideImage);
-	slideBlock.appendChild(tagLine);
-
-	banner.appendChild(slideBlock);
-});
-
-
-
-console.log (banner.children);
-
-
-
-
-
-
-
-
 //RECUPERATION DES FLECHES
 
-// const arrowRight = document.querySelector('.arrow_right'),
-// 	  arrowLeft = document.querySelector('.arrow_left');
+const arrowRight = document.querySelector('.arrow_right'),
+	  arrowLeft = document.querySelector('.arrow_left');
 
 
-// //AJOUT BULLET POINTS
-// const dots = document.querySelector('.dots');
+ //AJOUT BULLET POINTS
+const dots = document.querySelector('.dots');
 
-// slides.forEach(() => {
-// 	let dotsList = document.createElement('span');
-// 	dotsList.classList.add('dot');
-// 	dots.appendChild(dotsList);
-//  });
+	slides.forEach(() => {
+	let dotsList = document.createElement('span');
+ 	dotsList.classList.add('dot');
+	dots.appendChild(dotsList);
+ });
 
-
-
-// //CREATION DU VARIABLE IMAGE ACTUELLE DANS LA DIAPO
-// let imageIndex = 0;
-
-// // CREATION DE LA FONCTION POUR AFFIChER LE SLIDER
+ //RECUPERATION DE BANNER
+let slider = document.querySelector('.banner-img');
 
 
-
-// // //AJOUT DE EVENT LISTENERS POUR LES FLECHES & CREATION DE LA FONCTIONS CLICK RIGHT & LEFT
-
-//  function rightClick () {
-// 	console.log ('click')
-// }
-
-// function leftClick () {
-// 	console.log ('click')
-// }
+ //CREATION DU VARIABLE SLIDE EN COURS  DANS LA DIAPO
+let curImageIndex = 0;
 
 
-
-// arrowRight.addEventListener ('click', rightClick );
-// arrowLeft.addEventListener ('click', leftClick);
-
-
-
-
+//AJOUT DE LA STUCTURE DU SLIDER DANS BANNER
+function addSlider (index) {
+	slider.src = `./assets/images/slideshow/${slides[index].image}`;
+	document.querySelector('#banner p').innerHTML = slides[index].tagLine;
+}
 
 
+// AJOUT DE EVENT LISTENERS POUR LES FLECHES & CREATION DE LA FONCTIONS CLICK RIGHT & LEFT
 
+function rightClick () {
+	console.log ('click');
+	curImageIndex++;
+}
 
+arrowRight.addEventListener ('click', rightClick );
 
+function leftClick () {
+	console.log ('click');
+	curImageIndex--;
+}
 
-
-//
-// 
-
-
-
-
+arrowLeft.addEventListener ('click', leftClick);
 
 
 
