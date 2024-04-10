@@ -17,6 +17,20 @@ const slides = [
 	}
 ]
 
+//AJOUT BULLET POINTS
+const dotsList = document.querySelector('.dots');
+
+slides.forEach(() => {
+	let dot = document.createElement('span');
+	dot.classList.add('dot');
+	dotsList.appendChild(dot);
+ });
+ 
+console.log (dotsList);
+
+
+
+
 //RECUPERATION DES FLECHES
 
 const arrowRight = document.querySelector('.arrow_right'),
@@ -39,8 +53,13 @@ arrowRight.addEventListener ('click', rightClick );
 arrowLeft.addEventListener ('click', leftClick);
 
 
+
+
+
+
 //CREATION DU VARIABLE IMAGE ACTUELLE DANS LA DIAPO
 let imageIndex = 0;
+
 
 
 
