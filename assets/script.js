@@ -29,8 +29,12 @@ const dots = document.querySelector('.dots');
 	slides.forEach(() => {
 	let dotsList = document.createElement('span');
  	dotsList.classList.add('dot');
+	dotsList.classList.add ('.dot_selected');
 	dots.appendChild(dotsList);
  });
+
+ console.log(dots);
+
 
  //RECUPERATION DE BANNER
 let slider = document.querySelector('.banner-img');
@@ -42,38 +46,42 @@ let curImageIndex = 0;
 
 //AJOUT DE LA STUCTURE DU SLIDER DANS BANNER
 function slideShow (index) {
-	slider.src = `./assets/images/slideshow/${slides[index].image}`;
-	document.querySelector('#banner p').innerHTML = slides[index].tagLine;
+	if (index >= 0 && index < slides.length) {
+        slider.src = `./assets/images/slideshow/${slides[index].image}`;
+        document.querySelector('#banner p').innerHTML = slides[index].tagLine;
+    }
 }
 
 //RECUPERATION DES FLECHES
 
 const arrowRight = document.querySelector('.arrow_right');
+
 const arrowLeft = document.querySelector('.arrow_left');
 
 // AJOUT DE EVENT LISTENERS POUR LES FLECHES & CREATION DE LA FONCTIONS CLICK RIGHT & LEFT
 
 arrowRight.addEventListener('click', () => {
-		curImageIndex +1;
+    curImageIndex += 1;
 
-		if (curImageIndex >= slides.length) {
-			curImageIndex = 0;
-		}
+    if (curImageIndex >= slides.length) {
+        curImageIndex = 0; // Reset to the first slide if end is reached
+    }
 
-		slideShow(curImageIndex);
-	});
-	
+    slideShow(curImageIndex);
+});
+
+arrowLeft.addEventListener('click', () => {
+    curImageIndex -= 1;
+
+    if (curImageIndex < 0) {
+        curImageIndex = slides.length - 1; // Reset to the last slide if beginning is reached
+    }
+
+    slideShow(curImageIndex);
+});
 
 
-	arrowLeft.addEventListener('click', () => {
-		curImageIndex -1;
 
-		if (curImageIndex >= slides.length) {
-			curImageIndex = 0;
-		}
-
-		slideShow(curImageIndex);
-	});
 	
 
 
