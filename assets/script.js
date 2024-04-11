@@ -20,10 +20,7 @@ const slides = [
 
 
 
-//RECUPERATION DES FLECHES
 
-const arrowRight = document.querySelector('.arrow_right');
-const arrowLeft = document.querySelector('.arrow_left');
 
 
  //AJOUT BULLET POINTS
@@ -49,14 +46,18 @@ function slideShow (index) {
 	document.querySelector('#banner p').innerHTML = slides[index].tagLine;
 }
 
+//RECUPERATION DES FLECHES
+
+const arrowRight = document.querySelector('.arrow_right');
+const arrowLeft = document.querySelector('.arrow_left');
 
 // AJOUT DE EVENT LISTENERS POUR LES FLECHES & CREATION DE LA FONCTIONS CLICK RIGHT & LEFT
 
-rightArrow.addEventListener("click", () => {
-		currentIndex +1;
+arrowRight.addEventListener('click', () => {
+		curImageIndex +1;
 
-		if (currentIndex >= slides.length) {
-			currentIndex = 0;
+		if (curImageIndex >= slides.length) {
+			curImageIndex = 0;
 		}
 
 		slideShow(curImageIndex);
@@ -64,16 +65,16 @@ rightArrow.addEventListener("click", () => {
 	
 
 
+	arrowLeft.addEventListener('click', () => {
+		curImageIndex -1;
 
+		if (curImageIndex >= slides.length) {
+			curImageIndex = 0;
+		}
 
-function leftClick () {
-	console.log ('click');
-	curImageIndex--;
-}
-
-arrowLeft.addEventListener ('click', leftClick);
-
-
+		slideShow(curImageIndex);
+	});
+	
 
 
 
