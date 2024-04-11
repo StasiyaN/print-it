@@ -19,21 +19,30 @@ const slides = [
 
 
 
+//FONCTION UPDATE BULLET POINTS
+function updateDots () {
+	const dotElements = document.querySelectorAll('.dot');
+		dotElements.forEach ((dot, index) => {
+			if (index === curImageIndex) {
+				dot.classList.add ('dot_selected');
+			} else {
+				dot.classList.remove ('dot_selected');
+			}
+		});
+}
 
+updateDots();
 
-
-
- //AJOUT BULLET POINTS
+ //  //AJOUT BULLET POINTS
 const dots = document.querySelector('.dots');
 
-	slides.forEach(() => {
-	let dotsList = document.createElement('span');
- 	dotsList.classList.add('dot');
-	dotsList.classList.add ('.dot_selected');
-	dots.appendChild(dotsList);
- });
+slides.forEach(() => {
+let dotsList = document.createElement('span');
+dotsList.classList.add('dot');
+dots.appendChild(dotsList);
+});
 
- console.log(dots);
+//  console.log(dots);
 
 
  //RECUPERATION DE BANNER
@@ -49,7 +58,9 @@ function slideShow (index) {
 	if (index >= 0 && index < slides.length) {
         slider.src = `./assets/images/slideshow/${slides[index].image}`;
         document.querySelector('#banner p').innerHTML = slides[index].tagLine;
-    }
+    
+	updateDots();
+	}
 }
 
 //RECUPERATION DES FLECHES
@@ -64,7 +75,7 @@ arrowRight.addEventListener('click', () => {
     curImageIndex += 1;
 
     if (curImageIndex >= slides.length) {
-        curImageIndex = 0; // Reset to the first slide if end is reached
+        curImageIndex = 0; 
     }
 
     slideShow(curImageIndex);
@@ -74,11 +85,12 @@ arrowLeft.addEventListener('click', () => {
     curImageIndex -= 1;
 
     if (curImageIndex < 0) {
-        curImageIndex = slides.length - 1; // Reset to the last slide if beginning is reached
+        curImageIndex = slides.length - 1; 
     }
 
     slideShow(curImageIndex);
 });
+
 
 
 
