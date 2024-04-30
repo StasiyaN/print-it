@@ -55,7 +55,7 @@ let curImageIndex = 0;
 
 //AJOUT DE LA STUCTURE DU SLIDER DANS BANNER
 function slideShow (index) {
-	if (index >= 0 && index < slides.length) {
+	if (slides[index]) { // prendre NOTES
         slider.src = `./assets/images/slideshow/${slides[index].image}`;
         document.querySelector('#banner p').innerHTML = slides[index].tagLine;
     
