@@ -50,6 +50,7 @@ slides.forEach((slide, index) => {
     dotsContainer.appendChild(dot);
 });
 
+slideShow(curImageIndex);
 
 //FONCTION POUR COLORER LES DOTS A CHAQUE SLIDE
 function colorDots () {
@@ -69,8 +70,10 @@ colorDots();
 function slideShow (index) {
 	if (slides[index]) { // amelioration du code en simplifiant la ligne (i)ndex >= 0 && index < slides.length) 
 		slider.src = `./assets/images/slideshow/${slides[index].image}`;
-		document.querySelector('#banner p').innerHTML = slides[index].tagLine;		
-colorDots();
+		document.querySelector('#banner p').innerHTML = slides[index].tagLine;	
+		slider.alt = slides[index].altText;
+		curImageIndex = index;
+		colorDots();
 	}
 }
 
