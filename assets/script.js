@@ -24,20 +24,32 @@ const slides = [
 		"dotColor": "lavender"
 	}
 ]
+//CREATION DU VARIABLE SLIDE EN COURS  DANS LA DIAPO
+let curImageIndex = 0;
 //RECUPERATION DES FLECHES + AJOUT DE CURSEUR POINTER
 const arrowRight = document.querySelector('.arrow_right');
 arrowRight.style.cursor = 'pointer';
 const arrowLeft = document.querySelector('.arrow_left');
 arrowLeft.style.cursor = 'pointer';
-
-//AJOUT BULLET POINTS
-const dots = document.querySelector('.dots');
-//CREATION DU VARIABLE SLIDE EN COURS  DANS LA DIAPO
-let curImageIndex = 0;
 //RECUPERATION DE BANNER + SUPPRESION DE ALT INITIAL + AJOUT DE NOUVEAU ATL
 let slider = document.querySelector('.banner-img');
 slider.removeAttribute('alt');
 slider.setAttribute('alt', 'Impressions tous formats en boutique et en ligne');
+
+//AJOUT BULLET POINTS + AJOUT DE HOVER EFFECT
+const dotsContainer = document.querySelector('.dots');
+slides.forEach((slide, index) => {
+    let dot = document.createElement('span');
+    dot.classList.add('dot');
+    dot.style.cursor = 'pointer';
+    
+    dot.addEventListener('click', () => {
+        slideShow(index);
+    });
+
+    dotsContainer.appendChild(dot);
+});
+
 
 //FONCTION POUR COLORER LES DOTS A CHAQUE SLIDE
 function colorDots () {
@@ -52,11 +64,7 @@ function colorDots () {
 }
 colorDots();
 
-slides.forEach(() => {
-	let dotsList = document.createElement('span');
-	dotsList.classList.add('dot');
-	dots.appendChild(dotsList);
-});
+
 //AJOUT DE LA STUCTURE DU SLIDER DANS BANNER
 function slideShow (index) {
 	if (slides[index]) { // amelioration du code en simplifiant la ligne (i)ndex >= 0 && index < slides.length) 
