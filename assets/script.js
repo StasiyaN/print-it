@@ -25,7 +25,6 @@ const slides = [
 		"tagLine":"Autocollants <span>avec découpe laser sur mesure</span>",
 		"altText": "Autocollants avec découpe laser sur mesure",
 		"dotColor": "lavender"
-
 	}
 ]
 //RECUPERATION DES FLECHES
@@ -38,22 +37,22 @@ let curImageIndex = 0;
 //RECUPERATION DE BANNER + SUPPRESION DE ALT INITIAL + AJOUT DE NOUVEAU ATL
 let slider = document.querySelector('.banner-img');
 slider.removeAttribute('alt');
-slider.setAttribute('alt, Impressions tous formats en boutique et en ligne');
+slider.setAttribute('alt', 'Impressions tous formats en boutique et en ligne');
 
 
-//FONCTION UPDATE BULLET POINTS
-function updateDots () {
+//FONCTION POUR COLORER LES DOTS A CHAQUE SLIDE
+function colorDots () {
 	const dotElements = document.querySelectorAll('.dot');
 	dotElements.forEach ((dot, index) => {
 		if (index === curImageIndex) {
-			dot.classList.add ('dot_selected');
+			dot.style.backgroundColor = slides[index].dotColor;
 		} else {
-			dot.classList.remove ('dot_selected');
+			dot.style.backgroundColor = 'white';
 		}
 	});
 }
 
-updateDots();
+colorDots();
 
 
 
@@ -69,9 +68,8 @@ slides.forEach(() => {
 function slideShow (index) {
 	if (slides[index]) { // amelioration du code en simplifiant la ligne (i)ndex >= 0 && index < slides.length) 
 		slider.src = `./assets/images/slideshow/${slides[index].image}`;
-		document.querySelector('#banner p').innerHTML = slides[index].tagLine;
-		
-		updateDots();
+		document.querySelector('#banner p').innerHTML = slides[index].tagLine;		
+		colorDots();
 	}
 }
 
