@@ -36,13 +36,13 @@ let slider = document.querySelector('.banner-img');
 //AJOUT BULLET POINTS + AJOUT DE HOVER EFFECT
 const dotsContainer = document.querySelector('.dots');
 slides.forEach((slide, index) => {
-    let dot = document.createElement('span');
-    dot.classList.add('dot');
-    dot.style.cursor = 'pointer';    
-    dot.addEventListener('click', () => {
-        slideShow(index);
-    });
-    dotsContainer.appendChild(dot);
+	let dot = document.createElement('span');
+	dot.classList.add('dot');
+	dot.style.cursor = 'pointer';    
+	dot.addEventListener('click', () => {
+		slideShow(index);
+	});
+	dotsContainer.appendChild(dot);
 });
 
 //APPELLE A LA FONCTION slideShow
@@ -95,13 +95,3 @@ arrowLeft.addEventListener('click', () => {
 	}
 	slideShow(curImageIndex);
 });
-
-
-
-
-
-
-
-
-
-
