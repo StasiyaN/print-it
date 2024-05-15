@@ -2,8 +2,8 @@ const slides = [
 	{
 		"image":"slide1.jpg",
 		"tagLine":"Impressions tous formats <span>en boutique et en ligne</span>",
-		"altText": "Impressions tous formats en boutique et en ligne",
-		"dotColor": "aqua"
+		"altText": "Impressions tous formats en boutique et en ligne", //AJOUT DE NOUVEAU ALT
+		"dotColor": "aqua" //DECLARATION DES NOUVEAU COULEURS POUR LES DOTS
 	},
 	{
 		"image":"slide2.jpg",
@@ -24,33 +24,40 @@ const slides = [
 		"dotColor": "lavender"
 	}
 ]
-//CREATION DU VARIABLE SLIDE EN COURS  DANS LA DIAPO
+//********DECLARATION DES VARIABLES******
+//CREATION DU VARIABLE SLIDE EN COURS DANS LA DIAPO
 let curImageIndex = 0;
 //RECUPERATION DES FLECHES + AJOUT DE CURSEUR POINTER
 const arrowRight = document.querySelector('.arrow_right');
-arrowRight.style.cursor = 'pointer';
 const arrowLeft = document.querySelector('.arrow_left');
-arrowLeft.style.cursor = 'pointer';
-//RECUPERATION DE BANNER + SUPPRESION DE ALT INITIAL + AJOUT DE NOUVEAU ATL
+//RECUPERATION DE BANNER 
 let slider = document.querySelector('.banner-img');
-slider.removeAttribute('alt');
-slider.setAttribute('alt', 'Impressions tous formats en boutique et en ligne');
 
 //AJOUT BULLET POINTS + AJOUT DE HOVER EFFECT
 const dotsContainer = document.querySelector('.dots');
 slides.forEach((slide, index) => {
     let dot = document.createElement('span');
     dot.classList.add('dot');
-    dot.style.cursor = 'pointer';
-    
+    dot.style.cursor = 'pointer';    
     dot.addEventListener('click', () => {
         slideShow(index);
     });
-
     dotsContainer.appendChild(dot);
 });
 
+//APPELLE A LA FONCTION slideShow
 slideShow(curImageIndex);
+
+//AJOUT DE LA STUCTURE DU SLIDER DANS BANNER
+function slideShow (index) {
+	if (slides[index]) { // amelioration du code en simplifiant la ligne (i)ndex >= 0 && index < slides.length) 
+		slider.src = `./assets/images/slideshow/${slides[index].image}`;
+		document.querySelector('#banner p').innerHTML = slides[index].tagLine;	
+		slider.alt = slides[index].altText;
+		curImageIndex = index;
+		colorDots();
+	}
+}
 
 //FONCTION POUR COLORER LES DOTS A CHAQUE SLIDE
 function colorDots () {
@@ -65,19 +72,15 @@ function colorDots () {
 }
 colorDots();
 
+//MODIFICATION DE DU STYLE POUR LES FLECHES
+arrowRight.style.cursor = 'pointer';
+arrowLeft.style.cursor = 'pointer';
 
-//AJOUT DE LA STUCTURE DU SLIDER DANS BANNER
-function slideShow (index) {
-	if (slides[index]) { // amelioration du code en simplifiant la ligne (i)ndex >= 0 && index < slides.length) 
-		slider.src = `./assets/images/slideshow/${slides[index].image}`;
-		document.querySelector('#banner p').innerHTML = slides[index].tagLine;	
-		slider.alt = slides[index].altText;
-		curImageIndex = index;
-		colorDots();
-	}
-}
+//+ SUPPRESION DE ALT INITIAL + AJOUT DE NOUVEAU ALT
+slider.removeAttribute('alt');
+slider.setAttribute('alt', 'Impressions tous formats en boutique et en ligne');
 
-// AJOUT DE EVENT LISTENERS POUR LES FLECHES & CREATION DE LA FONCTIONS CLICK RIGHT & LEFT
+// AJOUT DE EVENT LISTENERS POUR LES FLECHES & CREATION DESFONCTIONS CLICK RIGHT & LEFT
 arrowRight.addEventListener('click', () => {
 	curImageIndex += 1;
 	if (curImageIndex >= slides.length) {
