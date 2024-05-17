@@ -77,7 +77,7 @@ colorDots();
 arrowRight.style.cursor = 'pointer';
 arrowLeft.style.cursor = 'pointer';
 
-//+ SUPPRESION DE ALT INITIAL + AJOUT DE NOUVEAU ALT
+//SUPPRESION DE ALT INITIAL + AJOUT DE NOUVEAU ALT
 slider.removeAttribute('alt');
 slider.setAttribute('alt', 'Impressions tous formats en boutique et en ligne');
 arrows.setAttribute('alt', 'flèche de navigation');
